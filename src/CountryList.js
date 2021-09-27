@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import Badge from 'react-bootstrap/Badge';
 
 const CountryList = (props) => {
   const { countries } = props;
@@ -53,9 +54,14 @@ const CountryList = (props) => {
           <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={country.flags[0]} />
             <Card.Body>
-              <Card.Title>{country.name.official}</Card.Title>
-              <Card.Text>region: {country.name.region}</Card.Text>
-              <Card.Text>subregion: {country.name.subregion}</Card.Text>
+              <Card.Title>
+                {country.name.official}
+                <Badge pill="true" bg="secondary">
+                  {country.tld}
+                </Badge>
+              </Card.Title>
+              <Card.Text>region: {country.region}</Card.Text>
+              <Card.Text>subregion: {country.subregion}</Card.Text>
               <Card.Text>capital: {country.capital}</Card.Text>
               <Card.Text>tlds: {country.tld}</Card.Text>{' '}
               <Card.Text>currencies: {currencies}</Card.Text>{' '}

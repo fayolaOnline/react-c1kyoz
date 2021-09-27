@@ -71,38 +71,13 @@ function Home() {
 }
 
 function Country() {
+  /////https://restcountries.com/v3/name/peru
   return <h2>Country</h2>;
 }
 
 function Search() {
-  const ListLoading = withListLoading(CountryList);
-  const [appState, setAppState] = useState({
-    loading: false,
-    countries: null,
-  });
-  useEffect(() => {
-    setAppState({ loading: true });
-    const apiUrl = `https://restcountries.com/v3/all`;
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((countries) => {
-        setAppState({ loading: false, countries: countries });
-      });
-  }, [setAppState]);
-  return (
-    <div>
-      <Notes />
-      <Search />
-      <DataGrab />
-
-      <div className="country-container">
-        <ListLoading
-          isLoading={appState.loading}
-          countries={appState.countries}
-        />
-      </div>
-    </div>
-  );
+  /////https://restcountries.com/v3/name/cana
+  return <h2>Search</h2>;
 }
 
 /*
