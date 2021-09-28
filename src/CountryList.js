@@ -1,6 +1,8 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Image from 'react-bootstrap/Image';
 
 const CountryList = (props) => {
   const { countries } = props;
@@ -51,9 +53,9 @@ const CountryList = (props) => {
       }
       return (
         <div>
-          <ListGroup horizontal>
+          <ListGroup>
             <ListGroup.Item>
-              <Image src={country.flags[0]} rounded />
+              <Image fluid src={country.flags[0]} rounded />
             </ListGroup.Item>
             <ListGroup.Item>{country.name.official}</ListGroup.Item>
             <ListGroup.Item>region: {country.region}</ListGroup.Item>
