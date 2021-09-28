@@ -3,10 +3,13 @@ import React from 'react';
 class DataGrab extends React.Component {
   componentDidMount() {
     const apiUrl = 'https://restcountries.com/v3/all';
-    var data;
+    var data
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => (this.data = data));
+      .then((data) => this.data = data);
+  }
+  render() {
+    return <p/>
   }
 }
 export default DataGrab;

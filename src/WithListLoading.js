@@ -5,11 +5,10 @@ function WithListLoading(Component) {
   return function WithLoadingComponent({ isLoading, ...props }) {
     if (!isLoading) return <Component {...props} />;
     return (
-      <Spinner animation="grow" role="status" variant="secondary">
-        <span className="visually-hidden">
-          Hold on, fetching data may take some time :)
-        </span>
-      </Spinner>
+      <span className="visually-hidden">
+        <Spinner animation="grow" role="status" variant="secondary" />
+        Hold on, fetching data may take some time :)
+      </span>
     );
   };
 }

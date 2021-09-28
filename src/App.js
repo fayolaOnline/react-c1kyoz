@@ -6,6 +6,8 @@ import Notes from './Notes';
 import React, { useEffect, useState } from 'react';
 import './style.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import ListGroup from 'react-bootstrap/ListGroup'
+import Tabs from 'react-bootstrap/Tabs'
 
 export default function App() {
   return (
@@ -76,7 +78,7 @@ function Country() {
 }
 
 function Search() {
-  /////https://restcountries.com/v3/name/cana
+  /////https://restcountries.com/v3/name/
   return <h2>Search</h2>;
 }
 

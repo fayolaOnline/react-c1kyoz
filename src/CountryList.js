@@ -56,9 +56,6 @@ const CountryList = (props) => {
             <Card.Body>
               <Card.Title>
                 {country.name.official}
-                <Badge pill="true" bg="secondary">
-                  {country.tld}
-                </Badge>
               </Card.Title>
               <Card.Text>region: {country.region}</Card.Text>
               <Card.Text>subregion: {country.subregion}</Card.Text>
