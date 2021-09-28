@@ -51,26 +51,21 @@ const CountryList = (props) => {
       }
       return (
         <div>
-          <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={country.flags[0]} />
-            <Card.Body>
-              <Card.Title>
-                {country.name.official}
-              </Card.Title>
-              <Card.Text>region: {country.region}</Card.Text>
-              <Card.Text>subregion: {country.subregion}</Card.Text>
-              <Card.Text>capital: {country.capital}</Card.Text>
-              <Card.Text>tlds: {country.tld}</Card.Text>{' '}
-              <Card.Text>currencies: {currencies}</Card.Text>{' '}
-              <Card.Text>languages: {languages}</Card.Text>
-            </Card.Body>
-
-            <Card.Body>
-              <Card.Title>Bordering Countries</Card.Title>
-              <Card.Link href="#">Card Link</Card.Link>
-              <Card.Link href="#">Another Link</Card.Link>
-            </Card.Body>
-          </Card>
+          <ListGroup horizontal>
+            <ListGroup.Item>
+              <Image src={country.flags[0]} rounded />
+            </ListGroup.Item>
+            <ListGroup.Item>{country.name.official}</ListGroup.Item>
+            <ListGroup.Item>region: {country.region}</ListGroup.Item>
+            <ListGroup.Item>subregion: {country.subregion}</ListGroup.Item>
+            <ListGroup.Item>capital: {country.capital}</ListGroup.Item>
+            <ListGroup.Item>tlds: {country.tld}</ListGroup.Item>{' '}
+            <ListGroup.Item>currencies: {currencies}</ListGroup.Item>{' '}
+            <ListGroup.Item>languages: {languages}</ListGroup.Item>
+            <ListGroup.Item>Bordering Countries</ListGroup.Item>
+            <ListGroup.Item href="#">Card Link</ListGroup.Item>
+            <ListGroup.Item href="#">Another Link</ListGroup.Item>
+          </ListGroup>
         </div>
       );
     }

@@ -6,8 +6,9 @@ import Notes from './Notes';
 import React, { useEffect, useState } from 'react';
 import './style.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import ListGroup from 'react-bootstrap/ListGroup'
-import Tabs from 'react-bootstrap/Tabs'
+import ListGroup from 'react-bootstrap/ListGroup';
+import Tabs from 'react-bootstrap/Tabs';
+import Stack from 'react-bootstrap/Stack'
 
 export default function App() {
   return (
@@ -27,7 +28,7 @@ export default function App() {
 
         <Switch>
           <Route path="/search">
-            <Search />
+            <Searching />
           </Route>
           <Route path="/country">
             <Country />
@@ -58,10 +59,9 @@ function Home() {
   }, [setAppState]);
   return (
     <div>
-      <Notes />
-      <Search />
       <DataGrab />
 
+      <Search />
       <div className="country-container">
         <ListLoading
           isLoading={appState.loading}
@@ -77,7 +77,7 @@ function Country() {
   return <h2>Country</h2>;
 }
 
-function Search() {
+function Searching() {
   /////https://restcountries.com/v3/name/
   return <h2>Search</h2>;
 }
