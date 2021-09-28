@@ -35,7 +35,7 @@ const CountryList = (props) => {
 
     return (
       <div>
-        {/* 
+        {/*
       <p>{strCountries}</p>
       */}
         <p>Enter the name of a country.</p>

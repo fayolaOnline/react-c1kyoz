@@ -18,14 +18,14 @@ class SearchForm extends React.Component {
   }
 
   handleSubmit(event) {
-    var newUrl = generatePath('/search/:name', {
-      name: this.state,
-    });
-    window.location.replace(newUrl);
+    this.setState({ value: event.target.value });
+    //alert(newUrl);
     // Will return /search/name
     //alert('A name was submitted: ' + this.state.value);
     //Search Countries using the apiUrl
-
+    const apiUrl = 'https://restcountries.com/v3/name/' + this.state;
+    alert(apiUrl);
+    window.location.replace(apiUrl);
     event.preventDefault();
   }
 
