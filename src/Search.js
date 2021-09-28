@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { generatePath } from 'react-router-dom';
 import './style.css';
 
 class SearchForm extends React.Component {
@@ -17,6 +18,11 @@ class SearchForm extends React.Component {
   }
 
   handleSubmit(event) {
+    var newUrl = generatePath('/search/:name', {
+      name: this.state,
+    });
+    window.location.replace(newUrl);
+    // Will return /search/name
     //alert('A name was submitted: ' + this.state.value);
     //Search Countries using the apiUrl
 
@@ -27,7 +33,6 @@ class SearchForm extends React.Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group className="mb-3" controlId="formCountry">
-          <Form.Label>Search</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter country"
@@ -36,12 +41,9 @@ class SearchForm extends React.Component {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          Search
         </Button>
       </Form>
-
-
-
     );
   }
 }

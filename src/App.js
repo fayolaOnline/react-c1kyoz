@@ -2,30 +2,37 @@ import Search from './Search';
 import withListLoading from './WithListLoading';
 import CountryList from './CountryList';
 import DataGrab from './DataGrab';
-import Notes from './Notes';
 import React, { useEffect, useState } from 'react';
 import './style.css';
+import Home from './pages/Home';
+import Searching from './pages/Searching';
+import Country from './pages/Country';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Tabs from 'react-bootstrap/Tabs';
-import Stack from 'react-bootstrap/Stack'
+import Stack from 'react-bootstrap/Stack';
 
 export default function App() {
   return (
     <Router>
       <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/search">Search</Link>
-          </li>
-          <li>
-            <Link to="/country">Country</Link>
-          </li>
-        </ul>
-
+        <Navbar bg="primarylight" variant="light" expand="lg">
+          <Container>
+            <Navbar.Brand href="/">Navbar</Navbar.Brand>
+            <Nav className="me-auto">
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/country">Country</Nav.Link>
+              <Nav.Link href="/search">Search</Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
         <Switch>
           <Route path="/search">
             <Searching />
@@ -41,76 +48,3 @@ export default function App() {
     </Router>
   );
 }
-
-function Home() {
-  const ListLoading = withListLoading(CountryList);
-  const [appState, setAppState] = useState({
-    loading: false,
-    countries: null,
-  });
-  useEffect(() => {
-    setAppState({ loading: true });
-    const apiUrl = `https://restcountries.com/v3/all`;
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((countries) => {
-        setAppState({ loading: false, countries: countries });
-      });
-  }, [setAppState]);
-  return (
-    <div>
-      <DataGrab />
-
-      <Search />
-      <div className="country-container">
-        <ListLoading
-          isLoading={appState.loading}
-          countries={appState.countries}
-        />
-      </div>
-    </div>
-  );
-}
-
-function Country() {
-  /////https://restcountries.com/v3/name/peru
-  return <h2>Country</h2>;
-}
-
-function Searching() {
-  /////https://restcountries.com/v3/name/
-  return <h2>Search</h2>;
-}
-
-/*
-export default function App() {
-  const ListLoading = withListLoading(CountryList);
-  const [appState, setAppState] = useState({
-    loading: false,
-    countries: null,
-  });
-  useEffect(() => {
-    setAppState({ loading: true });
-    const apiUrl = `https://restcountries.com/v3/all`;
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((countries) => {
-        setAppState({ loading: false, countries: countries });
-      });
-  }, [setAppState]);
-  return (
-    <div>
-      <Notes />
-      <Search />
-      <DataGrab />
-
-      <div className="country-container">
-        <ListLoading
-          isLoading={appState.loading}
-          countries={appState.countries}
-        />
-      </div>
-    </div>
-  );
-}
-*/
