@@ -22,9 +22,9 @@ export default function App() {
   return (
     <Router>
       <div>
-        <Navbar bg="primarylight" variant="light" expand="lg">
+        <Navbar bg="primarylight" variant="light" expand="sm">
           <Container>
-            <Navbar.Brand href="/">Navbar</Navbar.Brand>
+            <Navbar.Brand href="/">WorldInfo</Navbar.Brand>
             <Nav className="me-auto">
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Nav.Link href="/">Home</Nav.Link>

@@ -24,13 +24,19 @@ export default function Home() {
   });
   useEffect(() => {
     setAppState({ loading: true });
-    const apiUrl = `https://restcountries.com/v3/all`;
-    fetch(apiUrl)
+    var str = window.location.href; //window.location.href;
+    var param = str.split('/')[4];
+    //alert(param);
+    const apiUrlnew = 'https://restcountries.com/v3/name/' + param;
+    const apiUrl = 'https://restcountries.com/v3/all';
+    //alert('Fetching from: ' + apiUrlnew);
+    fetch(apiUrlnew)
       .then((res) => res.json())
       .then((countries) => {
         setAppState({ loading: false, countries: countries });
       });
   }, [setAppState]);
+
   return (
     <div>
       <DataGrab />

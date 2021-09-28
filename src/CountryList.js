@@ -6,12 +6,44 @@ import Image from 'react-bootstrap/Image';
 
 const CountryList = (props) => {
   const { countries } = props;
-  ///var countriesList = countries.map(function (country) {
-  ///  return <li>{country}</li>;
-  ///});
 
-  if (!countries || countries.length === 0)
-    return <p>No countries found, sorry.</p>;
+  var strCountries = JSON.stringify(countries);
+  var daerror =
+    '{"message":"Page Not Found","_links":{"self":{"href":"/v3/names/undefined","templated":false}}}';
+  var notFound = '{"status":404,"message":"Not Found"}';
+
+  const toType = (obj) => {
+    return {}.toString
+      .call(obj)
+      .match(/\s([^\]]+)/)[1]
+      .toLowerCase();
+  };
+
+  if (
+    !countries ||
+    countries.length === 0 ||
+    countries === undefined ||
+    strCountries === daerror ||
+    strCountries === notFound
+  ) {
+    const apiUrl = 'https://restcountries.com/v3/all';
+    fetch(apiUrl)
+      .then((res) => res.json())
+      .then((countries) => {
+        setAppState({ loading: false, countries: countries });
+      });
+
+    return (
+      <div>
+        {/* 
+      <p>{strCountries}</p>
+      */}
+        <p>Enter the name of a country.</p>
+      </div>
+    );
+  }
+
+  alert('contries is a ' + strCountries);
 
   //put them in alphabetical order
   countries.sort((a, b) =>
@@ -21,6 +53,7 @@ const CountryList = (props) => {
       ? -1
       : 0
   );
+
   var cList = countries.map(function (country) {
     if (
       country.name.official === undefined ||
