@@ -25,8 +25,8 @@ class SearchForm extends React.Component {
     //Search Countries using the apiUrl
     const apiUrl = 'https://restcountries.com/v3/name/' + this.state.value;
     //alert(apiUrl);
-
-    window.location.replace('/search/' + this.state.value);
+    var nextUrl = (this.state.value)?'/search/' + this.state.value:'/search';
+    window.location.replace(nextUrl);
     event.preventDefault();
   }
 

@@ -19,7 +19,7 @@ const CountryNode = (prop) => {
       .match(/\s([^\]]+)/)[1]
       .toLowerCase();
   };
-
+  //alert('in CountryNode: ' + JSON.stringify(prop));
   var cNode = (country) => {
     if (
       country.name.official === undefined ||
