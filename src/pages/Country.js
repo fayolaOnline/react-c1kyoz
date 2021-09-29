@@ -17,6 +17,37 @@ import Tabs from 'react-bootstrap/Tabs';
 import Stack from 'react-bootstrap/Stack';
 
 export default function Country() {
-  /////https://restcountries.com/v3/name/peru
-  return <h2>Country</h2>;
+  const ListLoading = withListLoading(CountryList);
+  const [appState, setAppState] = useState({
+    loading: false,
+    countries: null,
+  });
+  useEffect(() => {
+    setAppState({ loading: true });
+    var str = window.location.href; //window.location.href;
+    var param = str.split('/')[4];
+    //alert(param);
+    const apiUrlnew = 'https://restcountries.com/v3/name/' + param;
+    const apiUrl = 'https://restcountries.com/v3/all';
+    //alert('Fetching from: ' + apiUrlnew);
+    fetch(apiUrlnew)
+      .then((res) => res.json())
+      .then((countries) => {
+        setAppState({ loading: false, countries: countries });
+      });
+  }, [setAppState]);
+
+  return (
+    <div>
+      <DataGrab />
+
+      <Search />
+      <div className="country-container">
+        <ListLoading
+          isLoading={appState.loading}
+          countries={appState.countries}
+        />
+      </div>
+    </div>
+  );
 }

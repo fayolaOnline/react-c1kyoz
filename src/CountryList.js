@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Image from 'react-bootstrap/Image';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 const CountryList = (props) => {
   const { countries } = props;
@@ -90,6 +91,7 @@ const CountryList = (props) => {
             <ListGroup.Item>
               <Image fluid src={country.flags[0]} rounded />
             </ListGroup.Item>
+            {/** 
             <ListGroup.Item>{country.name.official}</ListGroup.Item>
             <ListGroup.Item>region: {country.region}</ListGroup.Item>
             <ListGroup.Item>subregion: {country.subregion}</ListGroup.Item>
@@ -100,6 +102,7 @@ const CountryList = (props) => {
             <ListGroup.Item>Bordering Countries</ListGroup.Item>
             <ListGroup.Item href="#">Card Link</ListGroup.Item>
             <ListGroup.Item href="#">Another Link</ListGroup.Item>
+            */}
           </ListGroup>
         </div>
       );

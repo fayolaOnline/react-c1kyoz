@@ -16,7 +16,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Tabs from 'react-bootstrap/Tabs';
 import Stack from 'react-bootstrap/Stack';
 
-export default function Home() {
+export default function Searching() {
   const ListLoading = withListLoading(CountryList);
   const [appState, setAppState] = useState({
     loading: false,
