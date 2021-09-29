@@ -1,6 +1,7 @@
 import Search from '../Search';
 import withListLoading from '../WithListLoading';
 import CountryList from '../CountryList';
+import CountryNode from '../CountryNode';
 import DataGrab from '../DataGrab';
 import Notes from '../Notes';
 import React, { useEffect, useState } from 'react';
@@ -43,10 +44,7 @@ export default function Country() {
 
       <Search />
       <div className="country-container">
-        <ListLoading
-          isLoading={appState.loading}
-          countries={appState.countries}
-        />
+        <CountryNode countries={appState.countries} />
       </div>
     </div>
   );

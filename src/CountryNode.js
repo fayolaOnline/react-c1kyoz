@@ -5,10 +5,10 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Image from 'react-bootstrap/Image';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-const CountryList = (props) => {
-  const { countries } = props;
+const CountryNode = (prop) => {
+  const { country } = prop;
 
-  var strCountries = JSON.stringify(countries);
+  var strCountry = JSON.stringify(country);
   var daerror =
     '{"message":"Page Not Found","_links":{"self":{"href":"/v3/names/undefined","templated":false}}}';
   var notFound = '{"status":404,"message":"Not Found"}';
@@ -20,42 +20,7 @@ const CountryList = (props) => {
       .toLowerCase();
   };
 
-  if (
-    !countries ||
-    countries.length === 0 ||
-    countries === undefined ||
-    strCountries === daerror ||
-    strCountries === notFound
-  ) {
-    const apiUrl = 'https://restcountries.com/v3/all';
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((countries) => {
-        setAppState({ loading: false, countries: countries });
-      });
-
-    return (
-      <div>
-        {/*
-      <p>{strCountries}</p>
-      */}
-        <p>Enter the name of a country.</p>
-      </div>
-    );
-  }
-
-  //alert('contries is a ' + strCountries);
-
-  //put them in alphabetical order
-  countries.sort((a, b) =>
-    a.name.official > b.name.official
-      ? 1
-      : b.name.official > a.name.official
-      ? -1
-      : 0
-  );
-
-  var cList = countries.map(function (country) {
+  var cNode = (country) => {
     if (
       country.name.official === undefined ||
       country.flags[0] === undefined ||
@@ -89,11 +54,8 @@ const CountryList = (props) => {
         <div>
           <ListGroup>
             <ListGroup.Item>
-              <Link to={'/country/' + country.name.official}>
-                <Image fluid src={country.flags[0]} rounded />
-              </Link>
+              <Image fluid src={country.flags[0]} rounded />
             </ListGroup.Item>
-            {/** 
             <ListGroup.Item>{country.name.official}</ListGroup.Item>
             <ListGroup.Item>region: {country.region}</ListGroup.Item>
             <ListGroup.Item>subregion: {country.subregion}</ListGroup.Item>
@@ -104,13 +66,12 @@ const CountryList = (props) => {
             <ListGroup.Item>Bordering Countries</ListGroup.Item>
             <ListGroup.Item href="#">Card Link</ListGroup.Item>
             <ListGroup.Item href="#">Another Link</ListGroup.Item>
-            */}
           </ListGroup>
         </div>
       );
     }
-  });
+  };
 
-  return <ul>{cList}</ul>;
+  return <ul>{cNode}</ul>;
 };
-export default CountryList;
+export default CountryNode;
