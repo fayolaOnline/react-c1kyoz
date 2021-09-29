@@ -23,7 +23,7 @@ export default function Country() {
     loading: false,
     countries: null,
   });
-  useEffect(() => {
+  useEffect(() => { //called after result is rendered
     setAppState({ loading: true });
     var str = window.location.href; //window.location.href;
     var param = str.split('/')[4];

@@ -28,7 +28,6 @@ export default function App() {
             <Nav className="me-auto">
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/country">Country</Nav.Link>
               <Nav.Link href="/search">Search</Nav.Link>
             </Nav>
           </Container>
